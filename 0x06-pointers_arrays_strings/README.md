@@ -1,1 +1,1 @@
-0x06. C - More pointers, arrays and strings
+readme for this projects.pointers array and strings.various task comleted
