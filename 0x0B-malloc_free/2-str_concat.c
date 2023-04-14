@@ -1,65 +1,21 @@
-#include "main.h"
-#include <stdlib.h>
-#include <stdio.h>
-/**
- * str_concat - Fuction which concatenates two strings
- * @s1: first string to concatenate
- * @s2: second string to concatenate
- * Return: Pointer to a new string created (Sucess), or NULL (Error)
- */
 char *str_concat(char *s1, char *s2)
 {
-	int i, x, len, len1, len2;
-	char *res;
+	if (s1 == NULL && s2 == NULL)
+	return (NULL);
 
-	len1 = len2 = 0;
+	size_t len1 = (s1 != NULL) ? strlen(s1) : 0;
+	size_t len2 = (s2 != NULL) ? strlen(s2) : 0;
+	char *res = malloc(len1 + len2 + 1);
 
-	if (s1 != NULL)
-	{
-		i = 0;
-		while (s1[i] != '\0')
-		{
-			len1++;
-			i++;
-		}
-	}
-
-	if (s2 != NULL)
-	{
-		i = 0;
-		while (s2[i] != '\0')
-		{
-			len2++;
-			i++;
-		}
-	}
-
-	len = len1 + len2;
-	res = (char *)malloc(sizeof(char) * (len + 1));
 	if (res == NULL)
-		return (NULL);
+	return (NULL);
 
-	i = 0;
 	if (s1 != NULL)
-	{
-		while (s1[i] != '\0')
-		{
-			res[i] = s1[i];
-			i++;
-		}
-	}
+	memcpy(res, s1, len1);
 
-	x = 0;
 	if (s2 != NULL)
-	{
-		while (s2[x] != '\0')
-		{
-			res[i] = s2[x];
-			i++;
-			x++;
-		}
-	}
-	res[len] = '\0';
+	memcpy(res + len1, s2, len2);
 
+	res[len1 + len2] = '\0';
 	return (res);
 }
